@@ -2,6 +2,7 @@
 /node_modules
 .idea
 .env
+.env.production
 /config/default.json
 /config/production.json
 /src/experiment.js
