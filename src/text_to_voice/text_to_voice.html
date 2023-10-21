@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Text_to_voice</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	 <link type="text/css"  rel="stylesheet"  href="text_to_voice.css" >
+  	
+</head>
+<body>
+
+<h1>JavaScript speechSynthesis API</h1>
+<div class="wrapper">
+	<button id="myBtn">Try it</button>
+	<p id="demo"></p>
+  <label for="text">Текст для преобразования:</label>
+  <textarea id="text">Добрый день! Не стесняйтесь изменять этот текст и не забудьте включить звук погромче.
+Хе-хе-хе...</textarea>
+  <button id="speak">Прослушать текст</button>
+
+</div>
+<script>
+	// https://xhtml.ru/2021/javascript/javascript-text-to-speech-and-its-many-quirks/
+		// захватим UI-элементы для работы с ними
+		const textEl = document.getElementById('text');
+		const speakEl = document.getElementById('speak');
+
+		// перехватим клик по кнопке
+		speakEl.addEventListener('click', speakText);
+
+		function speakText() {
+			console.log('click')
+		  // остановим все, что уже синтезируется в речь
+		  window.speechSynthesis.cancel();
+
+		  // прочитать текст
+		  const text = textEl.value;
+		  const utterance = new SpeechSynthesisUtterance(text);
+		  window.speechSynthesis.speak(utterance);
+		}
+
+		const element = document.getElementById("myBtn");
+
+		element.addEventListener("click", myFunction);
+
+		function myFunction() {
+			console.log('click')
+  			document.getElementById("demo").innerHTML = "Hello World";
+		}
+	</script>
+</body>
+</html>
